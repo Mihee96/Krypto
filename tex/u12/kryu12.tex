@@ -22,8 +22,22 @@
 \section*{Aufgabe 1}
 \begin{enumerate}
 \item[a)]
+Mit $\text{d}(C)=d \Rightarrow \text{d}(x,y) \geq d$ erhält man:
 \begin{align*}
-\sum_{x,y \in C} d(x,y) 
+\sum_{x,y \in C} \text{d}(x,y) \geq \sum_{x,y \in C} d \\
+\end{align*}
+Die Menge aller Paare von Kodewörten ist $|C \times C| = |C|^2 = m^2$. Es sind jedoch $|C|=m$ viele Paare der Gestalt $(x,x)$ darunter, für die $\text{d}(x,x)=0$ gilt. Es folgt:
+\begin{align*}
+\sum_{x,y \in C} d = & \left( |C \times C| - |\lbrace (x,x) | x \in C \rbrace| \right) d \\
+= & \left( |C|^2-|C| \right)d \\
+= & \left( m^2 - m\right) d \\
+= & m \left( m - 1 \right) d
+\end{align*}
+woraus die Behauptung folgt.
+\item[b)]
+$w_i$ bezeichnet die Anzahl aller Kodewörter, die an der i-ten Stelle eine 1 stehen haben. Es gibt demnach $|C|-w_i=m-w_i$ viele Kodewörter, die sich an eben dieser Stelle unterscheiden und eine 0 dort haben und für die Summe der Hamming-Abstände jeweils $+1$ bedeuten. Nun gibt es $w_i \cdot (m-w_i)$ solche Paare für die i-te Stelle. Das Summe aller Gewichte lässt sich also dann über folgende Summe berechnen:
+\begin{align*}
+    \sum_{i=1}^{n} w_i(m-w_i)
 \end{align*}
 \end{enumerate}
 
