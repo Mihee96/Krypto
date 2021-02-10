@@ -1,0 +1,86 @@
+\author{}
+\documentclass[12pt,a4paper]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\begin{document}
+    \title{Kryptographie und Kodierungstheorie} \subtitle{Definitionen} \date{}
+    \maketitle
+    \tableofcontents
+    \newpage
+    \section{Symmetrische Kryptographie}
+        \subsection{Klassische Kryptographische Verfahren}
+        \subsection{Symmetrische Kryptosysteme}
+            \subsubsection*{1.2.1 Definition: (Symmetrisches) Kryptosystem}
+                Ein Tupel $(\mathcal{M} ,\mathcal{K} ,\mathcal{C} , e, d)$ bestehend aus einer \emph{Klartextmenge} $\mathcal{M}$, einer \emph{Schlüsselmenge} $\mathcal{K}$, einer \emph{Chiffretextmenge} $\mathcal{C}$, einer \emph{Verschlüsselungsfunktion} $e:\mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$ und einer \emph{Entschlüsslungsfunktion} $d:\mathcal{K}  \times \mathcal{C} \rightarrow \mathcal{M} $ heißt \emph{Kryptosystem}, wenn die Mengen $\mathcal{M} ,\mathcal{K} $ und $\mathcal{C} $ nichtleer sind und $d(k,e(k,m))=m $ für alle $k \in \mathcal{K} $ und $m \in \mathcal{M} $ gilt.
+            \subsubsection*{1.2.6 Definition: Quotient, Rest}
+                Sei $a \in \mathbb{Z}$ und $m \in \mathbb{N}$. Sind $r$ und $q$ wie in 1.2.5 gewählt, so heißt \emph{$q$ Quotient} und \emph{$r$ Rest} von $a$ bei ganzzahliger Division durch $m$. Für den Quotient schreibt man dann $q = [a/m]$ und für den Rest $r=a \mod m$
+            \subsubsection*{1.2.7 Definition: Restklasse}
+                Sei $a \in \mathbb{Z}$ und $m \in \mathbb{N}$. Die \emph{Restklasse} $[a]_m$ von $a$ modulo $m$ wird definiert durch $[a]_m = \lbrace a + mq|q \in \mathbb{Z} \rbrace$ und auch als $a + \mathbb{Z}m$ geschrieben. Wenn klar ist, dass Restklassen modulo $m$ betrachtet werden, schreibt man häufig nur $a$ statt $[a]_m$. Die Menge $\lbrace [a]_m | a \in \mathbb{Z} \rbrace$ aller Restklassen modulo $m$ wird mit $\mathbb{Z}_m$ oder $\mathbb{Z}/m\mathbb{Z}$ bezeichnet und heit \emph{Restklassenring} modulo $m$.
+            \subsubsection*{1.2.9 Definition}
+                Seien $a,b \in \mathbb{Z}$ und sei $m \in \mathbb{N}$ sowie $n \in \mathbb{N}_0$. Dann definiert man die \emph{Summe}, die \emph{Negation}, die \emph{Differenz}, das \emph{Produkt} und die \emph{Potenz} von Restklassen durch
+                \begin{align*}
+                    [a]_m + [b]_m = & [a+b]_m, \\
+                    - [a]_m = & [-a]_m, \\
+                    [a]_m - [b]_m = & [a-b]_m, \\
+                    [a]_m \cdot [b]_m = & [a \cdot b]_m, \\
+                    [a]_m^n = & [a^n]_m.
+                \end{align*}
+            \subsubsection*{1.2.12 Definition: Inverses, prime Restklassengruppe}
+                Sei $a \in \mathbb{Z}$ und $m \in \mathbb{N}$. Gibt es $b \in \mathbb{Z}$ mit $[a]_m \cdot [b]_m = [1]_m$, so heißt $[a]_m$ \emph{invertierbar}, und $[b]_m$ wird \emph{Inverses} von $[a]_m$ genannt und mit $[a]_m^{-1}$ bezeichnet. Man sagt dann auch, dass $b$ ein Inverses von $a$ modulo $m$ ist. Die Menge aller invertierbaren Restklassen aus $\mathbb{Z}_m$ wird mit $\mathbb{Z}_m^*$ bezeichnet und heißt \emph{prime Restklassengruppe}.
+            \subsubsection*{1.2.17 Definition}
+                \begin{itemize}
+                    \item \emph{Alphabet $\Sigma$:} nichtleere Menge
+                    \item \emph{Wort der Länge $n$ über $\Sigma$:} $n$-Tupel $\left(s_1, \ldots, s_n\right)$ mit $s_1, \ldots, s_n \in \Sigma$. Kurz: $s_1, \ldots, s_n$
+                    \item \emph{Länge eines Wortes $w$:} $|w|$
+                    \item \emph{Menge der Worte der Länge $n$ über $\Sigma$:} $\Sigma^n$
+                    \item \emph{$a \dots a \in \Sigma^n$}: $a^n$
+                    \item \emph{leeres Wort ist einziges Wort der Länge 0. Schreibe auch $\varepsilon$. }
+                    \item \emph{Menge aller nichtleeren Wörter:} $\Sigma^+=\bigcup_{n\in\mathbb{N}}\Sigma^n$
+                    \item \emph{Menge aller Wörter:} $\Sigma^{0+}=\bigcup_{n\in\mathbb{N}_0} \Sigma^n$
+                    \item \emph{Verkettung:} \\$((s_1,\ldots,s_n),(t_1,\ldots,t_m))\mapsto (s_1,\ldots,s_n)(t_1,\ldots,t_m) =s_1\ldots s_n t_1\ldots t_m)$
+                \end{itemize}
+        \subsection{Perfekte Sicherheit}
+            \subsubsection*{1.3.3 Definition: Wahrscheinlichkeitsverteilung, Gleichverteilung}
+                Gilt \\ $P(X \in \Omega_2)=1$ und $P(X \in A \cup B)=P(X \in A)+P(X \in B)$ für alle disjunkten $A, B \subseteq \Omega_2$, so heißt $P^X$ \emph{Wahrscheinlichkeitsverteilung der Zufallsvariable X}. Ist $P^X( \lbrace a \rbrace)=\frac{1}{| \Omega_2 |}$ für alle $a \in \Omega_2$, so heißt $P^X$ \emph{Gleichverteilung} auf $\Omega_2$.
+            \subsubsection*{1.3.4 Definition: Identische Verteilung, Stochastische Unabhängigkeit}
+                Sei \\ $\Omega_3$ eine endliche Menge und $Y: \Omega_1 \rightarrow \Omega_3$ eine Zufallsvariable mit Wahrscheinlichkeitsverteilung $P^Y.$ Gilt $\Omega_3 = \Omega_2$ und $P^X = P^Y$, also $P(X \in A) = P(Y \in A)$ für alle $A \subseteq \Omega_2$ (oder äquivalent $P(X=a)=P(Y=a)$ für alle $a \ in \Omega_2$), so heißen $X$ und $Y$ \emph{identisch verteilt}. Gilt $P(X \in A, Y \in B) = P(X \in A) \cdot P(Y \in B)$ für alle $A \subseteq \Omega_2$ und $B \subseteq \Omega_3$ (oder äquivalent $P(X=a,Y=b)=P(X=a) \cdot P(Y=b)$ für alle $a \in \Omega_2$ und $b \in \Omega_3$), so heißen $X$ und $Y$ \emph{stochastisch unabhängig}.
+            \subsubsection*{1.3.5 Definition: Bedingte Wahrscheinlichkeit}
+                Seien X und Y Zufallsvariablen mit demselben Definitionsbereich und Wahrscheinlichkeitsverteilungen $P^X$ und $P^Y$. Weiter seien $A$ und $B$ Teilmengen des Zielbereichs von $X$ beziehungsweise $Y$, wobei $P(Y \in B) > 0$ gelte. Dann definiert man die \emph{bedingte Wahrscheinlichkeit} von $X \in A$ unter $Y \in B$ durch \[P(X \in A | Y \in B)= \frac{P(X \in A, Y \in B)}{P(Y \in B)}.\] Analog werden auch Schreibweisen wie $P(X=a|Y=b)$ definiert.
+            \subsubsection*{1.3.7 Definition: Erwartungswert}
+                Sei $X$ eine Zufallsvariable mit Wertemenge \\ $\lbrace x_1,\dots , x_m \rbrace \subseteq \mathbb{R}$ und Wahrscheinlichkeitsverteilung $P^X$. Dann definiert man den \emph{Erwartungswert} von $X$ durch \[E(X)=\sum_{i=1}^{m}x_i P(X=x_i).\] Betrachtet man zwei Zufallsexperimente mit drei möglichen Ausgängen, wobei die Wahrscheinlichkeiten für die einzelnen Ausgänge im einen Fall $\frac{9}{10}$, $\frac{1}{20}$ sowie $\frac{1}{20}$ und im anderen Fall jeweils $\frac{1}{3}$ sind, so hat man die Vorstellung, daß der Ausgang des zweiten Experiments unbestimmter ist als der des ersten Experiments. Diese Unbestimmtheit soll nun quantitativ gefaßt werden.
+            \subsubsection*{1.3.8 Definition: (Gemeinsame) Entropie}
+                Sei $C \in \mathbb{R}$ mit $C > 1$ und $X$ eine Zufallsvariable mit Wertemenge $\lbrace x_1,\dots,x_m \rbrace$. Dann heißt \[H_C^P(X)=-\sum_{i=1}^m P(X=x_i) \log_C P(X=x_i),\]wobei man $0 \cdot \log_c 0 = 0$ setzt, \emph{Entropie} von $X$ (zur Basis $C$). Ist zusätzlich $Y$ eine Zufallsvariable mit Wertemenge $\lbrace y_1, \dots, y_n \rbrace$, so definiert man \[H_C^P (X,Y)=- \sum_{\substack{i \in \lbrace 1, \dots, m \rbrace \\ j \in \lbrace 1, \dots, n \rbrace}} P(X=x_i, Y=y_j) \log_C P(X=x_i,Y=y_j),\] die \emph{gemeinsame Entropie} von $X$ und $Y$. Hier und bei den folgenden Bezeichnungen wird die
+                Basis $C$ gelegentlich weggelassen, wenn die Aussage unabhängig von der gewählten Basis gilt. (Treten in einer Aussage dabei mehrere solche Bezeichnungen auf, muss aber überall dieselbe Basis verwendet werden.) Das P kann in den Bezeichnungen ebenfalls entfallen, wenn die Abhängigkeit von P nicht betont wird.
+            \subsubsection*{1.3.11 Definition: Bedingte Entropie, Transinformation}
+                Bezeichnungen wie bei Entropie. Dann definiert man 
+                \begin{align*}
+                    H_C(X|Y)  = & - \sum_{j=1}^{n}P(Y=y_j) \sum_{i=1}^{m}P(X=x_i|Y=y_j) \log_C P(X=x_i|Y=y_j) \\
+                    = & - \sum_{\substack{i \in \lbrace 1, \dots, m \rbrace \\ j \in \lbrace 1, \dots, n \rbrace}} P(X=x_i,Y=y_j) \log_C P(X=x_i|Y=y_j),
+                \end{align*}
+                die \emph{bedingte Entropie} von $X$ unter $Y$. Weiter definiert man $I_C(X,Y)=H_C(X)-H_C(X|Y),$ die \emph{Transinformation} von $X$ und $Y$.
+            \subsubsection*{1.3.17 Definition: Schlüsselaquivokation, Klartextäquivokation}
+                Die Entropie $H(K|C)$ heißt \emph{Schlüsselaquivokation}, und $H(M|C)$ heißt \emph{Klartextäquivokation}.
+        \subsection{Blockchiffren}
+    \section{Asymmetrische Kryptographie}
+        \subsection{RSA-Verschlüsselung}
+        \subsection{ElGamal-Verschlüsselung}
+        \subsection{Elliptische Kurven in der Kryptogaphie}
+        \subsection{Kryptographische Hashfunktionen}
+        \subsection{Kryptographische Protokolle}
+    \section{Quellenkodierung}
+        \subsection{Eindeutig dekodierbare Kodes}
+        \subsection{Diskrete gedächtnislose Quellen}
+        \subsection{Konstruktion von Kodes}
+    \section{Kanalkodierung}
+        \subsection{Kanäle}
+        \subsection{Parameter fehlerkorrigierender Kodes}
+        \subsection{Lineare Kodes}
+        \subsection{Zyklische Kodes}
+        \subsection{Dualität}
+\end{document}
+
